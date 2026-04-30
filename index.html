@@ -1,1 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>annamkebab • Kebab Lezat Tanah Abang</title>
+    <!-- Tailwind CSS + Google Fonts + Font Awesome CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Tailwind Config for Modern UI & Brand Colors (Hijau UMKM / Teal segar) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0D9488',     // teal-600 (hijau kebiruan segar)
+                        secondary: '#0F766E',   // teal-700
+                        accent: '#14B8A6',      // teal-500
+                        softbg: '#F0FDFA',      // very light mint
+                        warm: '#FEF9E6',        // sentuhan hangat
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'Segoe UI', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards',
+                        'fade-up': 'fadeUp 0.6s ease-out forwards',
+                        'slide-down': 'slideDown 0.4s ease-out',
+                        'soft-bounce': 'softBounce 0.35s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        fadeUp: { '0%': { opacity: '0', transform: 'translateY(16px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        slideDown: { '0%': { opacity: '0', transform: 'translateY(-12px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        softBounce: { '0%': { transform: 'scale(1)' }, '50%': { transform: 'scale(1.02)' }, '100%': { transform: 'scale(1)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { scroll-behavior: smooth; }
+        .card-hover {
+            transition: all 0.25s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .btn-press:active { transform: scale(0.97); transition: transform 0.1s; }
+        .delay-100 { animation-delay: 0.1s; opacity: 0; }
+        .delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .delay-300 { animation-delay: 0.3s; opacity: 0; }
+        .delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(13, 148, 136, 0.15);
+        }
+        .product-badge {
+            background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-softbg via-white to-emerald-50/40 font-sans text-gray-800">
 
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-6 md:py-10">
+        
+        <!-- Hero Section / Brand Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 mb-10 md:mb-14 animate-fade-in">
+            <div>
+                <div class="inline-flex items-center gap-2 bg-primary/15 text-primary rounded-full px-4 py-1.5 text-sm font-semibold mb-3 shadow-sm">
+                    <i class="fas fa-certificate text-xs"></i>
+                    <span>Halal • Higienis • Cepat Saji</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                    <span class="bg-gradient-to-r from-teal-800 via-primary to-teal-600 bg-clip-text text-transparent">annamkebab</span>
+                </h1>
+                <p class="text-gray-600 mt-2 flex items-center gap-2 flex-wrap text-base"><i class="fas fa-location-dot text-primary"></i> Tanah Abang, Jakarta Pusat • Fast Food Timur Tengah & Lokal</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="https://wa.me/6285880523780?text=Halo%20annamkebab,%20saya%20ingin%20pesan%20menu" target="_blank" class="bg-primary text-white px-5 py-2.5 rounded-full font-semibold flex items-center gap-2 shadow-md hover:bg-secondary transition-all duration-300 transform hover:-translate-y-0.5 btn-press">
+                    <i class="fab fa-whatsapp"></i> Order via WA
+                </a>
+                <a href="#" class="bg-white border border-primary/40 text-primary px-5 py-2.5 rounded-full font-medium flex items-center gap-2 shadow-sm hover:bg-primary hover:text-white transition-all duration-300">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Grid: Info UMKM & Kontak -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+            <!-- Business Details Card -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-gray-100/80 p-6 md:p-7 animate-fade-up delay-100">
+                <div class="flex items-center gap-3 border-b border-primary/20 pb-4 mb-5">
+                    <div class="bg-primary/10 p-2 rounded-xl"><i class="fas fa-store text-primary text-xl"></i></div>
+                    <h2 class="text-xl font-bold text-gray-800">Profil UMKM</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-7 gap-y-5">
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide">Pemilik</p>
+                        <p class="font-semibold text-gray-800 text-lg">Annam S.Pd</p>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide">Alamat Lengkap</p>
+                        <p class="font-medium text-gray-800">Tanah Abang, Jakarta Pusat <span class="text-xs text-gray-400">(dekat stasiun & perkantoran)</span></p>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide"><i class="fab fa-whatsapp mr-1"></i> WhatsApp</p>
+                        <p class="font-mono text-primary font-semibold">085880523780</p>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide"><i class="far fa-envelope mr-1"></i> Email</p>
+                        <p class="text-gray-700 text-sm truncate">khairulannam6540@gmail.com</p>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide"><i class="far fa-clock"></i> Jam Operasional</p>
+                        <div class="flex flex-wrap gap-2 items-center mt-0.5">
+                            <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">Setiap Hari</span>
+                            <span class="font-bold text-gray-800">10.00 – 22.00 WIB</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs text-gray-400 uppercase tracking-wide">Kategori Usaha</p>
+                        <div class="flex flex-wrap gap-2 mt-1">
+                            <span class="bg-primary/10 text-primary px-3 py-0.5 rounded-full text-sm">Kuliner</span>
+                            <span class="bg-primary/10 text-primary px-3 py-0.5 rounded-full text-sm">Fast Food</span>
+                            <span class="bg-primary/10 text-primary px-3 py-0.5 rounded-full text-sm">UMKM</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Deskripsi Usaha -->
+                <div class="mt-7 pt-4 border-t border-gray-200">
+                    <p class="text-sm font-semibold text-gray-500 flex items-center gap-2 mb-2"><i class="fas fa-align-left text-primary"></i> Deskripsi Usaha</p>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">Usaha kebab ini bergerak di bidang kuliner yang menyajikan makanan cepat saji dengan cita rasa khas Timur Tengah yang dipadukan dengan selera lokal. Produk utama yang ditawarkan adalah kebab dengan berbagai pilihan isi seperti daging sapi, ayam, dan sayuran segar, dilengkapi dengan saus spesial yang lezat. Kami menggunakan bahan-bahan berkualitas, higienis, dan diolah secara fresh setiap hari untuk menjaga rasa dan kesehatan konsumen. Harga terjangkau membuat kebab ini cocok untuk semua kalangan, mulai dari pelajar hingga pekerja. Dengan konsep penyajian cepat, praktis, dan rasa konsisten, usaha kebab ini memiliki potensi besar untuk berkembang, terutama di lokasi strategis seperti dekat sekolah, kampus, atau pusat keramaian.</p>
+                </div>
+            </div>
+
+            <!-- Right Side: Quick Order & highlight -->
+            <div class="bg-gradient-to-br from-primary/5 to-emerald-100/30 rounded-2xl shadow-md p-6 border border-primary/20 animate-fade-up delay-200 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 text-primary mb-4">
+                        <i class="fas fa-motorcycle text-2xl"></i>
+                        <h3 class="font-bold text-lg">Pesanan Instan</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <a href="https://wa.me/6285880523780?text=Halo%20annamkebab,%20saya%20mau%20order%20kebab" target="_blank" class="flex items-center justify-between bg-white p-4 rounded-xl shadow-sm transition-all hover:shadow-md card-hover">
+                            <span class="flex items-center gap-3"><i class="fab fa-whatsapp text-green-600 text-xl"></i> <span class="font-semibold">Chat WhatsApp</span></span>
+                            <i class="fas fa-arrow-right text-primary"></i>
+                        </a>
+                        <div class="bg-white p-3 rounded-xl flex items-start gap-3 shadow-sm">
+                            <i class="fas fa-map-pin text-primary text-lg mt-0.5"></i>
+                            <div><p class="text-xs text-gray-500">📍 Lokasi strategis</p><p class="text-sm font-medium">Tanah Abang (dekat stasiun & keramaian)</p></div>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl">
+                            <div class="flex items-center gap-2 text-amber-600"><i class="fas fa-tag"></i><span class="text-sm font-semibold">Promo Spesial</span></div>
+                            <p class="text-xs text-gray-500 mt-1">Beli 3 Kebab Original gratis es teh. Minimal order 20k via WA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 pt-3 text-center text-xs text-gray-400">
+                    <i class="fas fa-check-circle text-primary"></i> Siap antar • GoFood/GrabFood tersedia
+                </div>
+            </div>
+        </div>
+
+        <!-- DAFTAR PRODUK Section -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-2">
+                <i class="fas fa-utensils text-3xl text-primary"></i>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-800">🍢 Menu Spesial</h2>
+                <div class="h-0.5 flex-1 bg-gradient-to-r from-primary/40 to-transparent rounded-full"></div>
+            </div>
+            <p class="text-gray-500 mb-7 max-w-xl">Rasakan kelezatan kebab Timur Tengah dengan sentuhan lokal. Fresh, cepat, dan affordable!</p>
+            
+            <!-- Product Grid (4 Produk sesuai data) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+                <!-- Product 1: Kebab Original -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover animate-fade-up delay-100 border border-gray-100">
+                    <div class="h-40 bg-gradient-to-br from-primary/10 to-emerald-100 flex items-center justify-center relative group">
+                        <i class="fas fa-drumstick-bite text-5xl text-primary/70 group-hover:scale-110 transition-transform duration-300"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Kebab Original</h3>
+                                <p class="text-primary font-bold text-xl mt-1">Rp10.000</p>
+                            </div>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Best Value</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">Kebab isi daging ayam/sapi dengan sayuran segar (selada, tomat, timun) dan saus spesial rahasia. Gurih & nikmat!</p>
+                        <a href="https://wa.me/6285880523780?text=Halo%20saya%20mau%20pesan%20Kebab%20Original%20(Rp10.000)" target="_blank" class="mt-4 w-full bg-primary/5 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-transparent btn-press">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                <!-- Product 2: Kebab Jumbo -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl card-hover animate-fade-up delay-200 border border-gray-100">
+                    <div class="h-40 bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center">
+                        <i class="fas fa-hamburger text-5xl text-amber-600/70 group-hover:scale-110 transition"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Kebab Jumbo</h3>
+                                <p class="text-primary font-bold text-xl mt-1">Rp15.000</p>
+                            </div>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">Extra Besar</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">Kebab ukuran besar dengan isi lebih banyak (daging double, sayur melimpah) dan rasa lebih puas. Cocok untuk yang lapar berat!</p>
+                        <a href="https://wa.me/6285880523780?text=Halo%20saya%20mau%20pesan%20Kebab%20Jumbo%20(Rp15.000)" target="_blank" class="mt-4 w-full bg-primary/5 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-transparent">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                <!-- Product 3: Kebab Keju -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl card-hover animate-fade-up delay-300 border border-gray-100">
+                    <div class="h-40 bg-yellow-50 flex items-center justify-center">
+                        <i class="fas fa-cheese text-5xl text-yellow-600/70"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Kebab Keju</h3>
+                                <p class="text-primary font-bold text-xl mt-1">Rp13.000</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Lumer</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">Kebab dengan tambahan keju mozarella yang lumer dan gurih. Perpaduan daging pilihan & keju premium membuat sensasi creamy.</p>
+                        <a href="https://wa.me/6285880523780?text=Halo%20saya%20mau%20pesan%20Kebab%20Keju%20(Rp13.000)" target="_blank" class="mt-4 w-full bg-primary/5 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-transparent">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                <!-- Product 4: Kebab Sosis -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl card-hover animate-fade-up delay-400 border border-gray-100">
+                    <div class="h-40 bg-rose-50 flex items-center justify-center">
+                        <i class="fas fa-hotdog text-5xl text-rose-500/70"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Kebab Sosis</h3>
+                                <p class="text-primary font-bold text-xl mt-1">Rp12.000</p>
+                            </div>
+                            <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">Favorit Anak</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-2 leading-relaxed">Kebab dengan isian sosis lezat, saus pilihan, dan tambahan sayuran segar. Rasa unik & praktis, cocok untuk camilan sore.</p>
+                        <a href="https://wa.me/6285880523780?text=Halo%20saya%20mau%20pesan%20Kebab%20Sosis%20(Rp12.000)" target="_blank" class="mt-4 w-full bg-primary/5 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-transparent">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra Promo bar / rekomendasi -->
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <div class="bg-white/70 rounded-full px-5 py-2 text-sm shadow-sm border border-primary/10 flex items-center gap-2"><i class="fas fa-check-circle text-primary"></i> Bebas MSG</div>
+                <div class="bg-white/70 rounded-full px-5 py-2 text-sm shadow-sm border border-primary/10 flex items-center gap-2"><i class="fas fa-leaf text-primary"></i> Sayuran Fresh</div>
+                <div class="bg-white/70 rounded-full px-5 py-2 text-sm shadow-sm border border-primary/10 flex items-center gap-2"><i class="fas fa-hand-peace text-primary"></i> Harga Ramah Kantong</div>
+            </div>
+        </div>
+
+        <!-- Tambahan info operasional & testimoni singkat -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 mb-8">
+            <div class="glass-card rounded-2xl p-6 flex items-start gap-4 animate-fade-up delay-200">
+                <i class="fas fa-clock text-3xl text-primary"></i>
+                <div>
+                    <h3 class="font-bold text-lg">Jam Layanan Lengkap</h3>
+                    <p class="text-gray-700">Setiap Hari: 10.00 – 22.00 WIB</p>
+                    <p class="text-sm text-gray-500 mt-1">Lokasi strategis di Tanah Abang (dekat sekolah, kampus, pusat keramaian). Bisa pre-order via WhatsApp.</p>
+                </div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 flex items-start gap-4 animate-fade-up delay-300">
+                <i class="fas fa-comment-dots text-3xl text-primary"></i>
+                <div>
+                    <h3 class="font-bold text-lg">Kata Pelanggan</h3>
+                    <p class="text-gray-600 italic">"Kebabnya enak, dagingnya juicy, sausnya juara! Harga bersahabat buat pelajar. Fast respon!" - Andi (Tanah Abang)</p>
+                    <p class="text-sm text-primary mt-2">⭐ 4.9/5 (150+ ulasan positif)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer + no hp / email lengkap -->
+        <footer class="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 gap-3">
+            <div class="flex flex-wrap justify-center gap-5">
+                <span><i class="fab fa-whatsapp text-primary"></i> 085880523780</span>
+                <span><i class="far fa-envelope text-primary"></i> khairulannam6540@gmail.com</span>
+                <span><i class="fas fa-map-marker-alt text-primary"></i> Tanah Abang, Jakarta</span>
+            </div>
+            <div class="text-xs">
+                © 2025 annamkebab • Fresh & Higienis • Cita rasa Timur Tengah - Lokal
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating WhatsApp Action Button Mobile -->
+    <div class="fixed bottom-6 right-6 z-40 md:hidden">
+        <a href="https://wa.me/6285880523780?text=Halo%20annamkebab,%20saya%20mau%20order%20menu" class="bg-green-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:bg-green-600 transition-all hover:scale-105 active:scale-95" style="box-shadow: 0 8px 20px rgba(0,0,0,0.2); animation: pulse-ring 2s infinite;">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <style>
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+
+    <!-- ensuring all contact numbers are clickable for WA -->
+    <script>
+        // optional smooth prefetch but not required
+        console.log("annamkebab - UMKM Profile with Tailwind CSS");
+    </script>
+</body>
+</html>
